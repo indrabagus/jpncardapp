@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/jpncardapp/precache-manifest.88bea66ca9c9ff1ad164fb38c9412b65.js"
+  "/jpncardapp/precache-manifest.a91d7eeac9d3e2a5685b8c17869eeb7d.js"
 );
 
 self.addEventListener('message', (event) => {
