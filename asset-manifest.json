@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/jpncardapp/static/css/main.4d61ae2c.chunk.css",
-    "main.js": "/jpncardapp/static/js/main.2d04ad61.chunk.js",
-    "main.js.map": "/jpncardapp/static/js/main.2d04ad61.chunk.js.map",
+    "main.css": "/jpncardapp/static/css/main.221ae01e.chunk.css",
+    "main.js": "/jpncardapp/static/js/main.bd7f89f7.chunk.js",
+    "main.js.map": "/jpncardapp/static/js/main.bd7f89f7.chunk.js.map",
     "runtime-main.js": "/jpncardapp/static/js/runtime-main.f9d30fe8.js",
     "runtime-main.js.map": "/jpncardapp/static/js/runtime-main.f9d30fe8.js.map",
-    "static/js/2.633fdc1d.chunk.js": "/jpncardapp/static/js/2.633fdc1d.chunk.js",
-    "static/js/2.633fdc1d.chunk.js.map": "/jpncardapp/static/js/2.633fdc1d.chunk.js.map",
+    "static/js/2.d4fcc3ff.chunk.js": "/jpncardapp/static/js/2.d4fcc3ff.chunk.js",
+    "static/js/2.d4fcc3ff.chunk.js.map": "/jpncardapp/static/js/2.d4fcc3ff.chunk.js.map",
     "index.html": "/jpncardapp/index.html",
-    "precache-manifest.c32478fa64fab6aa9c109e98e64e2222.js": "/jpncardapp/precache-manifest.c32478fa64fab6aa9c109e98e64e2222.js",
+    "precache-manifest.d5e01a7fa8dbaeec2d8ae8ab6c87a066.js": "/jpncardapp/precache-manifest.d5e01a7fa8dbaeec2d8ae8ab6c87a066.js",
     "service-worker.js": "/jpncardapp/service-worker.js",
-    "static/css/main.4d61ae2c.chunk.css.map": "/jpncardapp/static/css/main.4d61ae2c.chunk.css.map"
+    "static/css/main.221ae01e.chunk.css.map": "/jpncardapp/static/css/main.221ae01e.chunk.css.map",
+    "static/media/japan-2014618_640.jpg": "/jpncardapp/static/media/japan-2014618_640.ad39c2a1.jpg"
   }
 }
