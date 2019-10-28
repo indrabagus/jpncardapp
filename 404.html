@@ -12,12 +12,10 @@
       // to the new url with only a query string
       // e.g. http://indrabagus.github.io/jpncardapp/myunknown/part, becomes
       // http://indrabagus.github.io/jpncardapp
-      var segmentCount = 1;
-
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + segmentCount).join('/')
+        l.pathname.split('/').slice(0, 2).join('/')
       );
 
     </script>
