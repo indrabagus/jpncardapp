@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu'
 import {makeStyles} from '@material-ui/core/styles';
+import AppDrawer from '../components/AppsDrawer';
 
 
 const useStyles = makeStyles((theme)=>({
@@ -21,11 +22,17 @@ const useStyles = makeStyles((theme)=>({
 
 export default function MainContainer(props) {
   const classes = useStyles();
+  const [drawerOpen,setDrawerOpen]=React.useState(false);
+
+  const handleDrawerOpen = ()=>{
+    setDrawerOpen(!drawerOpen);
+  }
+
   return(
     <React.Fragment>
     <Container maxWidth='lg'>
       <Toolbar className={classes.toolbar}>
-        <IconButton>
+        <IconButton onClick={handleDrawerOpen}>
           <MenuIcon/>
         </IconButton>
       <Typography 
@@ -39,8 +46,12 @@ export default function MainContainer(props) {
       </Typography>
 
       </Toolbar>
+      <AppDrawer
+        open={drawerOpen}
+        onClose={handleDrawerOpen}
+      />
     </Container>
-    </React.Fragment>    
+    </React.Fragment>
   );
 };
 
