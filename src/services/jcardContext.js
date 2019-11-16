@@ -13,7 +13,6 @@ export function AuthCtxProvider(props){
   function stateAction(action){
     switch(action.type){
       case "LOGIN" :
-        console.log("ACTION:","LOGIN: ",authState.isAuthenticate);
         action.payload.isLocal ?
           localStorage.setItem("token",action.payload.token)
           :

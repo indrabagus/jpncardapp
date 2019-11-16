@@ -38,11 +38,28 @@ const useStyles = makeStyles(theme => ({
 export default function SignIn(){
   const classes = useStyles();
   const authctx = React.useContext(AuthContext);
+  const [sVal,setState] = React.useState({
+    username:'',
+    password:'',
+    isSubmitting:false,
+    isRemember:true,
+    errmsg:null    
+  });
+
+  function handleChange(event){
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    const id = event.target.id;
+    setState({
+      ...sVal,
+      [id]:value,
+    });
+  }
+
   function OnSignIn(props){
     authctx.action({
       type:"LOGIN",
         payload:{
-        isLocal:true,
+        isLocal:sVal.isRemember,
         token:null
       }
     });
@@ -58,18 +75,30 @@ export default function SignIn(){
         label="Username"
         autoComplete="username"
         autoFocus
+        value={sVal.username}
+        id="username"
+        onChange={handleChange}
       />
       <TextField 
         variant="outlined"
         margin="normal"
-        type="password"
+        id="password"
         label="Password"
         autoComplete="current-password"
         required
         fullWidth
+        onChange={handleChange}
       />
       <FormControlLabel
-        control={<Checkbox value="remember" color="primary" />}
+        control={
+          <Checkbox
+            type="checkbox" 
+            checked = {sVal.isRemember}
+            id="isRemember" 
+            color="primary" 
+            onChange={handleChange} 
+          />
+        }
         label="Remember me"
       />
       <Button
