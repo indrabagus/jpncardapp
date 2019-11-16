@@ -9,7 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import {makeStyles} from '@material-ui/core/styles';
-import {Link} from 'react-router-dom';
+import AuthContext from '../services/jcardContext'
 
 const useStyles = makeStyles((theme)=>({
   toolBar : {
@@ -24,6 +24,11 @@ const useStyles = makeStyles((theme)=>({
 
 export default function AppDrawer(props){
   const classes = useStyles();
+  const authctx = React.useContext(AuthContext);
+
+  function onSignOut(){
+    authctx.action({type:"LOGOUT"});
+  }
   return(
     <Drawer
       variant="temporary"
@@ -40,7 +45,7 @@ export default function AppDrawer(props){
       </div>
       <Divider/>
       <List>
-        <ListItem button component='a' href="#">
+        <ListItem button onClick={onSignOut}>
           <ListItemIcon><LockIcon/></ListItemIcon>
           <ListItemText primary="Signout"/>
         </ListItem>
