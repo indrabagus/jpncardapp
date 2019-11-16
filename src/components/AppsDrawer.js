@@ -45,9 +45,14 @@ export default function AppDrawer(props){
       </div>
       <Divider/>
       <List>
+      <ListItem button onClick={()=>props.onGetCard("/genki/random/1")}>
+          <ListItemIcon><LockIcon/></ListItemIcon>
+          <ListItemText primary="Genki Book Vol 1"/>
+        </ListItem>
+
         <ListItem button onClick={onSignOut}>
           <ListItemIcon><LockIcon/></ListItemIcon>
-          <ListItemText primary="Signout"/>
+          <ListItemText primary="Sign Out"/>
         </ListItem>
         
       </List>

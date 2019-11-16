@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme)=>({
 
   pos: {
     // fontSize:22,
-    marginBottom:12,
+    marginBottom:theme.spacing(2),
   },
 }));
 
@@ -51,15 +51,16 @@ export default function VoCard(props){
           Vocabulary Card
         </Typography>
         <Typography className={classes.vocabulary} >
-          勉強する
+          { props.data.kanji ? props.data.kanji:props.data.kana}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          Irregular verbs
+          { props.data.kanji ? '[ '+props.data.kana+' ]':''} 
         </Typography>
         <Typography variant="body2" component="p">
-          to study (~を).
+          English: '{props.data.english}''
           <br />
-          {'"図書館で勉強するができます。"'}
+          <br />
+          e.g: {'"図書館で勉強するができます。"'}
         </Typography>
       </CardContent>
       <CardActions>
