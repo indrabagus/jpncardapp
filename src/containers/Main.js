@@ -10,7 +10,7 @@ import AppDrawer from '../components/AppsDrawer';
 
 const useStyles = makeStyles((theme)=>({
   toolbar:{
-    marginTop : 10,
+    marginTop : theme.spacing(1),
     borderTop : `1px solid ${theme.palette.divider}`,
     borderBottom:`1px solid ${theme.palette.divider}`,
   },
