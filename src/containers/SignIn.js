@@ -120,9 +120,8 @@ export default function SignIn(){
         variant="contained"
         color="primary"
         fullWidth
-        // onClick={OnSignIn}
       >
-        SignIn
+        Sign In
       </Button>
     </form>
   );
