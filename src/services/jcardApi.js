@@ -1,7 +1,7 @@
 import axios from 'axios';
+import {Config} from './jcConfig';
 
-export const baseUrl = "https://qambing.com/rest-api/v0.1";
-export const loginUrl = `${baseUrl}/login`;
+export const loginUrl = `${Config.url.APIBASE_URL}/login`;
 
 export async function getToken(username,passwd){
   const result = await axios.get(`${loginUrl}`,{
