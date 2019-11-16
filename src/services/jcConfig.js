@@ -9,7 +9,7 @@ const production = {
 
 const development = {
   url:{
-    APIBASE_URL : 'https://192.168.0.40/rest-api/v0.1',
+    APIBASE_URL : 'http://192.168.0.40/rest-api/v0.1',
     BASENAME : '/devbase'
   }
 };
