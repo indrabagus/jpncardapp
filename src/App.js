@@ -1,21 +1,15 @@
-import React,{useEffect,useState} from 'react';
-import {getToken} from './services/jcardApi';
-import MainContainer from './containers/Main';
-
-// import {getToken} from './services/jcardApi'
+import React,{useEffect} from 'react';
+import {BrowserRouter as Router} from "react-router-dom";
+import SwitchRoute from './services/jcardRouter';
 function App() {
-  const [token, setToken] = useState();
+  // const [token, setToken] = useState();
   useEffect(() => {
-    // getToken('guest','kumamotox')
-    // .then(result => setToken(result.token))
-    // .catch(err=>{
-    //   console.log("ERROR=>",err);
-    //   setToken(err.response.data.error);
-    // });
   }, []);
 
   return (
-    <MainContainer/>
+    <Router>
+      <SwitchRoute/>
+    </Router>
   );
 }
 

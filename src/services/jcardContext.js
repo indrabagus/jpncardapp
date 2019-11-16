@@ -10,6 +10,25 @@ export function AuthCtxProvider(props){
     token:null
   });
 
+  React.useEffect(
+    function(){
+      if(localStorage.getItem('token')){
+        setAuthCtxState({
+          isAuthenticate:true,
+          isLocal:true,
+          token:localStorage.getItem('token')
+        });
+      }else if(sessionStorage.getItem('token')){
+        setAuthCtxState({
+          isAuthenticate:true,
+          isLocal:false,
+          token:sessionStorage.getItem('token')
+        });
+      }
+
+    },[]
+  );
+
   function stateAction(action){
     switch(action.type){
       case "LOGIN" :
