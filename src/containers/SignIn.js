@@ -12,6 +12,12 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 import Copyright from '../components/Copyright';
 import AuthContext from '../services/jcardContext';
 import {getToken} from '../services/jcardApi';
@@ -46,6 +52,8 @@ export default function SignIn(){
     errmsg:null    
   });
 
+  const [open, setOpen] = React.useState(false);  
+
   function handleChange(event){
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
     const id = event.target.id;
@@ -71,12 +79,18 @@ export default function SignIn(){
       console.log("ERROR=>",err);
       setState({
         ...sVal,
-        errmsg: err.response.data.error
+        errmsg: err.message||err.statusText
       });
+      setOpen(true);
     });
 
 
   }
+
+
+  const handleClose = () => {
+    setOpen(false);
+  };  
 
   const FormLogin = (
     <form action="/" method="GET" onSubmit={OnSignIn} className={classes.form} noValidate>
@@ -96,6 +110,7 @@ export default function SignIn(){
         variant="outlined"
         margin="normal"
         id="password"
+        type="password"
         label="Password"
         autoComplete="current-password"
         required
@@ -124,6 +139,7 @@ export default function SignIn(){
         Sign In
       </Button>
     </form>
+    
   );
 
   return (
@@ -149,6 +165,26 @@ export default function SignIn(){
       <Box mt={8}>
         <Copyright />
       </Box>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Error Notification !"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Error Message: {sVal.errmsg}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary" autoFocus>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+
     </Container>
   );
 }
