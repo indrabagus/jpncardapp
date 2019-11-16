@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from '../components/Copyright';
 import AuthContext from '../services/jcardContext';
-
+import {getToken} from '../services/jcardApi';
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -56,17 +56,30 @@ export default function SignIn(){
   }
 
   function OnSignIn(props){
-    authctx.action({
-      type:"LOGIN",
-        payload:{
-        isLocal:sVal.isRemember,
-        token:null
-      }
+    props.preventDefault();
+    getToken(sVal.username,sVal.password)
+    .then((result) => {
+      authctx.action({
+        type:"LOGIN",
+          payload:{
+          isLocal:sVal.isRemember,
+          token:result.token
+        }
+      });
+    })
+    .catch(err=>{
+      console.log("ERROR=>",err);
+      setState({
+        ...sVal,
+        errmsg: err.response.data.error
+      });
     });
+
+
   }
 
   const FormLogin = (
-    <form className={classes.form} noValidate>
+    <form action="/" method="GET" onSubmit={OnSignIn} className={classes.form} noValidate>
       <TextField
         variant="outlined"
         margin="normal"
@@ -103,11 +116,11 @@ export default function SignIn(){
       />
       <Button
         className={classes.submit}
-        type="button"
+        type="submit"
         variant="contained"
         color="primary"
         fullWidth
-        onClick={OnSignIn}
+        // onClick={OnSignIn}
       >
         SignIn
       </Button>
