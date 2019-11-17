@@ -57,10 +57,12 @@ export default function MainContainer(props) {
 
   React.useEffect(function(){
     let current = localStorage.getItem('current-url');
-    if(current){
-      setCurrUrl(current);
-      onGetCardData(current);
+    if(!current){
+      current='/genki/random/1'
+      localStorage.setItem('current-url',current);
     }
+    setCurrUrl(current);
+    onGetCardData(current);    
   },[]);
 
   return(
