@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme)=>({
     minWidth:290,
     [theme.breakpoints.up('sm')]: {
       maxWidth:600,      
-      minWidth:400,
+      minWidth:600,
     },
     
     [theme.breakpoints.up('md')]: {
@@ -23,10 +23,10 @@ const useStyles = makeStyles((theme)=>({
     borderRadius:10,
   },
   title: {
-    fontSize:'1rem',
-    [theme.breakpoints.up('md')]: {
-      fontSize:'2rem',
-    }    
+    fontSize:'2rem',
+    // [theme.breakpoints.up('xs')]: {
+    //   fontSize:'2rem',
+    // }    
   },
 
   vocabulary : {
@@ -45,8 +45,8 @@ const useStyles = makeStyles((theme)=>({
 export default function VoCard(props){
   const classes = useStyles();
   return(
-    <Card className={classes.card}>
-      <CardContent>
+    <Card className={classes.card} >
+      <CardContent onClick={props.onGetCard}>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           Vocabulary Card
         </Typography>
@@ -54,10 +54,11 @@ export default function VoCard(props){
           { props.data.kanji ? props.data.kanji:props.data.kana}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          { props.data.kanji ? '[ '+props.data.kana+' ]':''} 
+          {/* If it's not kanji write unicode 'space' (\u00a0) instead */}
+          { props.data.kanji ? '[ '+props.data.kana+' ]':"\u00a0"} 
         </Typography>
         <Typography variant="body2" component="p">
-          English: '{props.data.english}''
+          English: "{props.data.english}"
           <br />
           <br />
           e.g: {'"図書館で勉強するができます。"'}
@@ -65,7 +66,7 @@ export default function VoCard(props){
       </CardContent>
       <CardActions>
         <Button 
-          size="small"
+          size="medium"
           onClick={props.onGetCard}
         >
           Learn More
