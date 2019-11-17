@@ -6,8 +6,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu'
 import {makeStyles} from '@material-ui/core/styles';
+
 import AppDrawer from '../components/AppsDrawer';
 import VoCard from '../components/Card';
+import {getCardData} from '../services/jcardApi';
+import AuthContext from '../services/jcardContext';
 
 const useStyles = makeStyles((theme)=>({
   toolbar:{
@@ -35,10 +38,30 @@ const useStyles = makeStyles((theme)=>({
 export default function MainContainer(props) {
   const classes = useStyles();
   const [drawerOpen,setDrawerOpen]=React.useState(false);
-
-  const handleDrawerOpen = ()=>{
+  const [cardvalue,setCardValue] = React.useState({});
+  const [currUrl,setCurrUrl]=React.useState();
+  const authctx = React.useContext(AuthContext);
+  function handleDrawerOpen(){
     setDrawerOpen(!drawerOpen);
   }
+
+  function onGetCardData(url){
+    getCardData(authctx.authstate.token,url)
+    .then((resp)=>{
+      setCardValue(resp.result);
+    })
+    .catch((err)=>{
+      console.log("ERROR :",err);
+    });
+  }
+
+  React.useEffect(function(){
+    let current = localStorage.getItem('current-url');
+    if(current){
+      setCurrUrl(current);
+      onGetCardData(current);
+    }
+  },[]);
 
   return(
     <React.Fragment>
@@ -60,6 +83,7 @@ export default function MainContainer(props) {
       <AppDrawer
         open={drawerOpen}
         onClose={handleDrawerOpen}
+        onGetCard={onGetCardData}        
       />
       <Grid  
         container
@@ -70,7 +94,10 @@ export default function MainContainer(props) {
         // style={{ minHeight: '100vh' }} 
       >
         <Grid item xs={12}>
-        <VoCard/>
+        <VoCard 
+          data={cardvalue}
+          onGetCard={()=>onGetCardData(currUrl)}
+        />
         </Grid>
 
       </Grid>

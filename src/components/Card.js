@@ -64,7 +64,12 @@ export default function VoCard(props){
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button 
+          size="small"
+          onClick={props.onGetCard}
+        >
+          Learn More
+        </Button>
       </CardActions>
     </Card>
   );

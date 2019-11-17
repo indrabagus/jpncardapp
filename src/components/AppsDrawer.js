@@ -26,8 +26,9 @@ export default function AppDrawer(props){
   const classes = useStyles();
   const authctx = React.useContext(AuthContext);
 
-  function onSignOut(){
-    authctx.action({type:"LOGOUT"});
+  function onGetJCardHandler(url){
+    localStorage.setItem('current-url',url); // save the url to local storage
+    props.onGetCard(url);
   }
   return(
     <Drawer
@@ -45,12 +46,12 @@ export default function AppDrawer(props){
       </div>
       <Divider/>
       <List>
-      <ListItem button onClick={()=>props.onGetCard("/genki/random/1")}>
+      <ListItem button onClick={()=>onGetJCardHandler("/genki/random/1")}>
           <ListItemIcon><LockIcon/></ListItemIcon>
           <ListItemText primary="Genki Book Vol 1"/>
         </ListItem>
 
-        <ListItem button onClick={onSignOut}>
+        <ListItem button onClick={()=>authctx.action({type:"LOGOUT"})}>
           <ListItemIcon><LockIcon/></ListItemIcon>
           <ListItemText primary="Sign Out"/>
         </ListItem>
