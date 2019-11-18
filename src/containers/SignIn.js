@@ -68,7 +68,7 @@ export default function SignIn(){
     getToken(sVal.username,sVal.password)
     .then((result) => {
       authctx.action({
-        type:"LOGIN",
+        type:"SIGNIN",
           payload:{
           isLocal:sVal.isRemember,
           token:result.token

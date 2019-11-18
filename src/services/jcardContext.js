@@ -31,7 +31,7 @@ export function AuthCtxProvider(props){
 
   function stateAction(action){
     switch(action.type){
-      case "LOGIN" :
+      case "SIGNIN" :
         action.payload.isLocal ?
           localStorage.setItem("token",action.payload.token)
           :
@@ -43,7 +43,7 @@ export function AuthCtxProvider(props){
           });
       break;
   
-      case "LOGOUT":
+      case "SIGNOUT":
         authState.isLocal ? 
           localStorage.clear() : sessionStorage.clear();
         setAuthCtxState({
