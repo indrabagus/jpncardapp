@@ -23,14 +23,14 @@ const useStyles = makeStyles((theme)=>({
     borderRadius:10,
   },
   title: {
-    fontSize:'2rem',
-    // [theme.breakpoints.up('xs')]: {
-    //   fontSize:'2rem',
-    // }    
+    fontSize:'1rem',
+    [theme.breakpoints.up('sm')]: {
+      fontSize:'2rem',
+    }    
   },
 
   vocabulary : {
-    fontSize:'1rem',
+    fontSize:'1.5rem',
     [theme.breakpoints.up('md')]: {
       fontSize:'4rem',
     }
@@ -58,10 +58,10 @@ export default function VoCard(props){
           { props.data.kanji ? '[ '+props.data.kana+' ]':"\u00a0"} 
         </Typography>
         <Typography variant="body2" component="p">
-          English: "{props.data.english}"
+          "{props.data.english}"
+          {/* <br />
           <br />
-          <br />
-          e.g: {'"図書館で勉強するができます。"'}
+          e.g: {'"図書館で勉強するができます。"'} */}
         </Typography>
       </CardContent>
       <CardActions>
