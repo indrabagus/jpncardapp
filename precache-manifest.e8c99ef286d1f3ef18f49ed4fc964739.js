@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "43349c3cc3533ce3a2162d58025907ba",
+    "revision": "45539977f5ae800046565cfda95f961c",
     "url": "/jpncardapp/index.html"
   },
   {
-    "revision": "ca77231ccb668768b7a6",
+    "revision": "45c9a9803bf91e1baffc",
     "url": "/jpncardapp/static/css/main.34de6062.chunk.css"
   },
   {
-    "revision": "002a42018a406dd01f70",
-    "url": "/jpncardapp/static/js/2.15da7609.chunk.js"
+    "revision": "cb56b5aceeb57257bc64",
+    "url": "/jpncardapp/static/js/2.6c07c6ac.chunk.js"
   },
   {
-    "revision": "ca77231ccb668768b7a6",
-    "url": "/jpncardapp/static/js/main.b19c6a72.chunk.js"
+    "revision": "45c9a9803bf91e1baffc",
+    "url": "/jpncardapp/static/js/main.05caff81.chunk.js"
   },
   {
     "revision": "33c2b2865550d5f5b960",
