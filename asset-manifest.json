@@ -1,17 +1,22 @@
 {
   "files": {
-    "main.css": "/jpncardapp/static/css/main.207af344.chunk.css",
-    "main.js": "/jpncardapp/static/js/main.f3968d8c.chunk.js",
-    "main.js.map": "/jpncardapp/static/js/main.f3968d8c.chunk.js.map",
-    "runtime-main.js": "/jpncardapp/static/js/runtime-main.f9d30fe8.js",
-    "runtime-main.js.map": "/jpncardapp/static/js/runtime-main.f9d30fe8.js.map",
-    "static/js/2.1cd1aa5e.chunk.js": "/jpncardapp/static/js/2.1cd1aa5e.chunk.js",
-    "static/js/2.1cd1aa5e.chunk.js.map": "/jpncardapp/static/js/2.1cd1aa5e.chunk.js.map",
+    "main.css": "/jpncardapp/static/css/main.34de6062.chunk.css",
+    "main.js": "/jpncardapp/static/js/main.b19c6a72.chunk.js",
+    "main.js.map": "/jpncardapp/static/js/main.b19c6a72.chunk.js.map",
+    "runtime-main.js": "/jpncardapp/static/js/runtime-main.f5d42711.js",
+    "runtime-main.js.map": "/jpncardapp/static/js/runtime-main.f5d42711.js.map",
+    "static/js/2.15da7609.chunk.js": "/jpncardapp/static/js/2.15da7609.chunk.js",
+    "static/js/2.15da7609.chunk.js.map": "/jpncardapp/static/js/2.15da7609.chunk.js.map",
     "index.html": "/jpncardapp/index.html",
-    "precache-manifest.0588afd2ac241166527594f80a9b2b43.js": "/jpncardapp/precache-manifest.0588afd2ac241166527594f80a9b2b43.js",
+    "precache-manifest.0bb7047380693794753bae7381fcdca8.js": "/jpncardapp/precache-manifest.0bb7047380693794753bae7381fcdca8.js",
     "service-worker.js": "/jpncardapp/service-worker.js",
-    "static/css/main.207af344.chunk.css.map": "/jpncardapp/static/css/main.207af344.chunk.css.map",
-    "static/media/japan-2014618_640.jpg": "/jpncardapp/static/media/japan-2014618_640.ad39c2a1.jpg",
+    "static/css/main.34de6062.chunk.css.map": "/jpncardapp/static/css/main.34de6062.chunk.css.map",
     "static/media/japan.svg": "/jpncardapp/static/media/japan.29f79c14.svg"
-  }
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f5d42711.js",
+    "static/js/2.15da7609.chunk.js",
+    "static/css/main.34de6062.chunk.css",
+    "static/js/main.b19c6a72.chunk.js"
+  ]
 }
