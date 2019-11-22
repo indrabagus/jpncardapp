@@ -92,6 +92,7 @@ export default function MainContainer(props) {
           <img
             src={JpnSvg}
             className={classes.imageIcon}
+            alt=""
           />
         </Icon>
         <Typography 
