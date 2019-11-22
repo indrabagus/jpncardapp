@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {AuthCtxProvider} from './services/jcardContext';
+import {AppCtxProvider} from './services/jcardContext';
 
 ReactDOM.render(
-<AuthCtxProvider>
+<AppCtxProvider>
   <App />
-</AuthCtxProvider>
+</AppCtxProvider>
 , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

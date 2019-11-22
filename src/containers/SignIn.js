@@ -19,7 +19,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import Copyright from '../components/Copyright';
-import AuthContext from '../services/jcardContext';
+import AppContext from '../services/jcardContext';
 import {getToken} from '../services/jcardApi';
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function SignIn(){
   const classes = useStyles();
-  const authctx = React.useContext(AuthContext);
+  const authctx = React.useContext(AppContext);
   const [sVal,setState] = React.useState({
     username:'',
     password:'',

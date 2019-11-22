@@ -11,7 +11,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import AppDrawer from '../components/AppsDrawer';
 import VoCard from '../components/Card';
 import {getCardData} from '../services/jcardApi';
-import AuthContext from '../services/jcardContext';
+import AppContext from '../services/jcardContext';
 import Copyright from '../components/Copyright';
 import JpnSvg from '../assets/japan.svg';
 
@@ -55,7 +55,7 @@ export default function MainContainer(props) {
   const [drawerOpen,setDrawerOpen]=React.useState(false);
   const [cardvalue,setCardValue] = React.useState({});
   const [currUrl,setCurrUrl]=React.useState();
-  const authctx = React.useContext(AuthContext);
+  const authctx = React.useContext(AppContext);
   function handleDrawerOpen(){
     setDrawerOpen(!drawerOpen);
   }

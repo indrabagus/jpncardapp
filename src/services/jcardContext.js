@@ -1,10 +1,9 @@
 import React from 'react';
-const AuthContext = React.createContext({});
-export const AuthCtxConsumer = AuthContext.Consumer;
+const AppContext = React.createContext({});
 
 
-export function AuthCtxProvider(props){
-  const [authState,setAuthCtxState] = React.useState({
+export function AppCtxProvider(props){
+  const [appState,setAppState] = React.useState({
     isAuthenticate:false,
     isLocal:true,
     token:null
@@ -13,13 +12,13 @@ export function AuthCtxProvider(props){
   React.useEffect(
     function(){
       if(localStorage.getItem('token')){
-        setAuthCtxState({
+        setAppState({
           isAuthenticate:true,
           isLocal:true,
           token:localStorage.getItem('token')
         });
       }else if(sessionStorage.getItem('token')){
-        setAuthCtxState({
+        setAppState({
           isAuthenticate:true,
           isLocal:false,
           token:sessionStorage.getItem('token')
@@ -36,7 +35,7 @@ export function AuthCtxProvider(props){
           localStorage.setItem("token",action.payload.token)
           :
           sessionStorage.setItem("token",action.payload.token);
-          setAuthCtxState({
+          setAppState({
             isAuthenticate:true,
             isLocal:action.payload.isLocal,
             token:action.payload.token
@@ -44,9 +43,9 @@ export function AuthCtxProvider(props){
       break;
   
       case "SIGNOUT":
-        authState.isLocal ? 
+        appState.isLocal ? 
           localStorage.clear() : sessionStorage.clear();
-        setAuthCtxState({
+        setAppState({
           isAuthenticate:false,
           isLocal:true,
           token:null
@@ -58,15 +57,15 @@ export function AuthCtxProvider(props){
     }
   }  
   return(
-    <AuthContext.Provider
+    <AppContext.Provider
       value={{
-        authstate:authState,
+        authstate:appState,
         action: stateAction
       }}    
     >
       {props.children}
-    </AuthContext.Provider>
+    </AppContext.Provider>
   );
 }
 
-export default AuthContext;
+export default AppContext;

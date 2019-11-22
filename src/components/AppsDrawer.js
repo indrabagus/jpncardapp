@@ -17,7 +17,7 @@ import ClassIcon from '@material-ui/icons/Class';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 
-import AuthContext from '../services/jcardContext'
+import AppContext from '../services/jcardContext'
 
 const useStyles = makeStyles((theme)=>({
   toolBar : {
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme)=>({
 
 export default function AppDrawer(props){
   const classes = useStyles();
-  const authctx = React.useContext(AuthContext);
+  const authctx = React.useContext(AppContext);
   const [expand, setExpand] = React.useState(false);
 
   function onGetJCardHandler(url){
