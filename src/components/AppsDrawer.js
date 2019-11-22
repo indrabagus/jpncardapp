@@ -83,15 +83,16 @@ export default function AppDrawer(props){
             className={classes.nested}
             onClick={()=>onGetJCardHandler("/genki/random/1")}
           >
-            <ListItemIcon> <ClassIcon/> </ListItemIcon>
+            <IconButton> <ClassIcon/> </IconButton>
             <ListItemText primary="Genki Book Vol 1"/>
           </ListItem>
+
           <ListItem 
             button 
             className={classes.nested}
             onClick={()=>onGetJCardHandler("/genki/random/2")}
           >
-            <ListItemIcon> <ClassIcon/> </ListItemIcon>
+            <IconButton> <ClassIcon/> </IconButton>            
             <ListItemText primary="Genki Book Vol 2"/>
           </ListItem>
         </List>
