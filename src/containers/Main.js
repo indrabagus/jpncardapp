@@ -54,15 +54,14 @@ export default function MainContainer(props) {
   const classes = useStyles();
   const [drawerOpen,setDrawerOpen]=React.useState(false);
   const [cardvalue,setCardValue] = React.useState({});
-  const [currUrl,setCurrUrl]=React.useState();
   const appctx = React.useContext(AppContext);
   function handleDrawerOpen(){
     setDrawerOpen(!drawerOpen);
   }
 
   /* Get Card data from the backend */
-  function onGetCardData(url){
-    getCardData(appctx.state.token,url)
+  function onGetCardData(){
+    getCardData(appctx.state.token,appctx.state.currUrl)
     .then((resp)=>{
       setCardValue(resp.result);
     })
@@ -80,13 +79,13 @@ export default function MainContainer(props) {
   }
 
   React.useEffect(function(){
-    let current = localStorage.getItem('current-url');
-    if(!current){
-      current='/genki/random/1'
-      localStorage.setItem('current-url',current);
-    }
-    setCurrUrl(current);
-    onGetCardData(current);    
+    // let current = localStorage.getItem('current-url');
+    // if(!current){
+    //   current='/genki/random/1'
+    //   localStorage.setItem('current-url',current);
+    // }
+    // setCurrUrl(current);
+    onGetCardData();    
   },[]);
 
   return(
@@ -129,7 +128,8 @@ export default function MainContainer(props) {
         <Grid item xs={12}>
         <VoCard 
           data={cardvalue}
-          onGetCard={()=>onGetCardData(currUrl)}
+          title={appctx.state.cardTitle}
+          onGetCard={onGetCardData}
         />
         </Grid>
 

@@ -41,9 +41,16 @@ export default function AppDrawer(props){
   const appctx = React.useContext(AppContext);
   const [expand, setExpand] = React.useState(false);
 
-  function onGetJCardHandler(url){
-    localStorage.setItem('current-url',url); // save the url to local storage
-    props.onGetCard(url);
+  function onGetJCardHandler(url,title){
+    // save all to the app context
+    appctx.action({
+      type:"CHANGECARD",
+      payload:{
+        currUrl : url,
+        cardTitle:title
+      }
+    });
+    props.onGetCard();
   }
   return(
     <Drawer
@@ -81,7 +88,7 @@ export default function AppDrawer(props){
           <ListItem 
             button 
             className={classes.nested}
-            onClick={()=>onGetJCardHandler("/genki/random/1")}
+            onClick={()=>onGetJCardHandler("/genki/random/1","Genki Volume 1")}
           >
             <IconButton> <ClassIcon/> </IconButton>
             <ListItemText primary="Genki Book Vol 1"/>
@@ -90,7 +97,7 @@ export default function AppDrawer(props){
           <ListItem 
             button 
             className={classes.nested}
-            onClick={()=>onGetJCardHandler("/genki/random/2")}
+            onClick={()=>onGetJCardHandler("/genki/random/2","Genki Volume 2")}
           >
             <IconButton> <ClassIcon/> </IconButton>            
             <ListItemText primary="Genki Book Vol 2"/>

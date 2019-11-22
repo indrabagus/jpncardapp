@@ -14,17 +14,21 @@ export function AppCtxProvider(props){
   React.useEffect(
     function(){
       if(localStorage.getItem('token')){
-        setAppState({
-          isAuthenticate:true,
-          isLocal:true,
-          token:localStorage.getItem('token')
-        });
+        setAppState(prevState=> {
+          return {
+            ...prevState,
+            isAuthenticate:true,
+            isLocal:true,
+            token:localStorage.getItem('token'),
+          }});
       }else if(sessionStorage.getItem('token')){
-        setAppState({
-          isAuthenticate:true,
-          isLocal:false,
-          token:sessionStorage.getItem('token')
-        });
+        setAppState(prevState=>{
+          return {
+            ...prevState,
+            isAuthenticate:true,
+            isLocal:false,
+            token:sessionStorage.getItem('token'),
+          }});
       }
       let url = localStorage.getItem('current-url');
       let title = localStorage.getItem('current-title');
@@ -36,10 +40,12 @@ export function AppCtxProvider(props){
         title= 'Genki Volume 1 Card';
         localStorage.setItem('current-title',title);
       }
-      setAppState({
-        currUrl:url,
-        cardTitle:title
-      });
+      setAppState(prevState=>{
+        return {
+          ...prevState,
+          currUrl:url,
+          cardTitle:title
+        }});
 
     },[]
   );
@@ -51,28 +57,34 @@ export function AppCtxProvider(props){
           localStorage.setItem("token",action.payload.token)
           :
           sessionStorage.setItem("token",action.payload.token);
-          setAppState({
-            isAuthenticate:true,
-            isLocal:action.payload.isLocal,
-            token:action.payload.token
-          });
+          setAppState(prevState=>{
+            return{
+              ...prevState,
+              isAuthenticate:true,
+              isLocal:action.payload.isLocal,
+              token:action.payload.token,
+          }});
       break;
   
       case "SIGNOUT":
         appState.isLocal ? 
           localStorage.clear() : sessionStorage.clear();
-        setAppState({
-          isAuthenticate:false,
-          isLocal:true,
-          token:null
-        });
+        setAppState(prevState=>{
+          return {
+            ...prevState,
+            isAuthenticate:false,
+            isLocal:true,
+            token:null,
+        }});
       break;
 
       case "CHANGECARD":
-        setAppState({
-          currUrl:action.payload.currUrl,
-          cardTitle:action.payload.cardTitle
-        });
+        setAppState(prevState=>{
+          return{
+            ...prevState,
+            currUrl:action.payload.currUrl,
+            cardTitle:action.payload.cardTitle
+        }});
         localStorage.setItem('current-url',appState.currUrl);
         localStorage.setItem('current-title',appState.cardTitle);
       break;

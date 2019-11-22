@@ -48,7 +48,7 @@ export default function VoCard(props){
     <Card className={classes.card} >
       <CardContent onClick={props.onGetCard}>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Vocabulary Card
+          {props.title}
         </Typography>
         <Typography className={classes.vocabulary} >
           { props.data.kanji ? props.data.kanji:props.data.kana}
