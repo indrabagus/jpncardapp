@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function SignIn(){
   const classes = useStyles();
-  const authctx = React.useContext(AppContext);
+  const appctx = React.useContext(AppContext);
   const [sVal,setState] = React.useState({
     username:'',
     password:'',
@@ -67,7 +67,7 @@ export default function SignIn(){
     props.preventDefault();
     getToken(sVal.username,sVal.password)
     .then((result) => {
-      authctx.action({
+      appctx.action({
         type:"SIGNIN",
           payload:{
           isLocal:sVal.isRemember,

@@ -6,7 +6,7 @@ import MainContainer from '../containers/Main';
 
 export default function SwitchRoute(){
   const context = React.useContext(AppContext);
-  if(context.authstate.isAuthenticate ===false){
+  if(context.state.isAuthenticate ===false){
     return(
       <Switch>
         <Route path="/" exact component={SignIn} />

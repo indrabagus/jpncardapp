@@ -6,7 +6,9 @@ export function AppCtxProvider(props){
   const [appState,setAppState] = React.useState({
     isAuthenticate:false,
     isLocal:true,
-    token:null
+    token:null,
+    currUrl:null,
+    cardTitle:null
   });
 
   React.useEffect(
@@ -24,6 +26,20 @@ export function AppCtxProvider(props){
           token:sessionStorage.getItem('token')
         });
       }
+      let url = localStorage.getItem('current-url');
+      let title = localStorage.getItem('current-title');
+      if(!url){
+        localStorage.setItem('current-url','/genki/random/1');
+        url = '/genki/random/1';
+      }
+      if(!title){
+        title= 'Genki Volume 1 Card';
+        localStorage.setItem('current-title',title);
+      }
+      setAppState({
+        currUrl:url,
+        cardTitle:title
+      });
 
     },[]
   );
@@ -51,6 +67,15 @@ export function AppCtxProvider(props){
           token:null
         });
       break;
+
+      case "CHANGECARD":
+        setAppState({
+          currUrl:action.payload.currUrl,
+          cardTitle:action.payload.cardTitle
+        });
+        localStorage.setItem('current-url',appState.currUrl);
+        localStorage.setItem('current-title',appState.cardTitle);
+      break;
   
       default:
         return null;
@@ -59,7 +84,7 @@ export function AppCtxProvider(props){
   return(
     <AppContext.Provider
       value={{
-        authstate:appState,
+        state:appState,
         action: stateAction
       }}    
     >

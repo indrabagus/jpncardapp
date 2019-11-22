@@ -55,19 +55,27 @@ export default function MainContainer(props) {
   const [drawerOpen,setDrawerOpen]=React.useState(false);
   const [cardvalue,setCardValue] = React.useState({});
   const [currUrl,setCurrUrl]=React.useState();
-  const authctx = React.useContext(AppContext);
+  const appctx = React.useContext(AppContext);
   function handleDrawerOpen(){
     setDrawerOpen(!drawerOpen);
   }
 
   /* Get Card data from the backend */
   function onGetCardData(url){
-    getCardData(authctx.authstate.token,url)
+    getCardData(appctx.state.token,url)
     .then((resp)=>{
       setCardValue(resp.result);
     })
     .catch((err)=>{
-      console.log("ERROR :",err);
+      if(err.response){
+        console.log("RESP:",err.response);
+        if(err.response.status === 401){
+          appctx.action({type:"SIGNOUT"});
+        }
+      }
+      else{
+        console.log("ERROR :",err);
+      }
     });
   }
 

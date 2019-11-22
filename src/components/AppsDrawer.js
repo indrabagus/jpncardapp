@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme)=>({
 
 export default function AppDrawer(props){
   const classes = useStyles();
-  const authctx = React.useContext(AppContext);
+  const appctx = React.useContext(AppContext);
   const [expand, setExpand] = React.useState(false);
 
   function onGetJCardHandler(url){
@@ -98,7 +98,7 @@ export default function AppDrawer(props){
         </List>
       </Collapse>
 
-        <ListItem button onClick={()=>authctx.action({type:"SIGNOUT"})}>
+        <ListItem button onClick={()=>appctx.action({type:"SIGNOUT"})}>
           <ListItemIcon><LockIcon/></ListItemIcon>
           <ListItemText primary="Sign Out"/>
         </ListItem>
