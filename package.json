@@ -1,6 +1,7 @@
 {
   "name": "jpncardapp",
-  "version": "0.1.0",
+  "homepage": "https://indrabagus.github.io/jpncardapp/",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.6.0",
