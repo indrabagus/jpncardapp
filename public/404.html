@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Single Page Apps for GitHub Pages</title>
+    <script type="text/javascript">
+      // This script hacked based on Single Page Apps for GitHub Pages
+      // https://github.com/rafrex/spa-github-pages
+      // ----------------------------------------------------------------------
+      // This script takes the current url and converts the path and query
+      // string into just a query string, and then redirects the browser
+      // to the new url with only a query string
+      // e.g. http://indrabagus.github.io/jpncardapp/myunknown/part, becomes
+      // http://indrabagus.github.io/jpncardapp
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 2).join('/')
+      );
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
