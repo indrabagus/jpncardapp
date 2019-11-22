@@ -2,6 +2,7 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
+import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu'
@@ -11,8 +12,19 @@ import AppDrawer from '../components/AppsDrawer';
 import VoCard from '../components/Card';
 import {getCardData} from '../services/jcardApi';
 import AuthContext from '../services/jcardContext';
+import Copyright from '../components/Copyright';
+import JpnSvg from '../assets/japan.svg';
 
 const useStyles = makeStyles((theme)=>({
+
+  imageIcon: {
+    height: '100%'
+  },
+  iconRoot: {
+    textAlign: 'center',
+    marginRight:theme.spacing(1),
+  },
+
   toolbar:{
     marginTop : theme.spacing(2),
     marginBottom:theme.spacing(5),
@@ -32,6 +44,9 @@ const useStyles = makeStyles((theme)=>({
     display:'flex',
     alignItems:'centre',
     justifyContent: 'flex-end',
+  },
+  copyright :{
+    marginTop:theme.spacing(3)
   }
 }));
 
@@ -45,6 +60,7 @@ export default function MainContainer(props) {
     setDrawerOpen(!drawerOpen);
   }
 
+  /* Get Card data from the backend */
   function onGetCardData(url){
     getCardData(authctx.authstate.token,url)
     .then((resp)=>{
@@ -72,6 +88,12 @@ export default function MainContainer(props) {
         <IconButton onClick={handleDrawerOpen}>
           <MenuIcon/>
         </IconButton>
+        <Icon classes={{root: classes.iconRoot}}>
+          <img
+            src={JpnSvg}
+            className={classes.imageIcon}
+          />
+        </Icon>
         <Typography 
           className={classes.toolbarTitle}
           component="h2"
@@ -103,6 +125,9 @@ export default function MainContainer(props) {
         </Grid>
 
       </Grid>
+      <div className={classes.copyright}>
+        <Copyright/>
+      </div>
     </Container>
     </React.Fragment>
   );

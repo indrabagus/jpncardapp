@@ -12,6 +12,8 @@ import {makeStyles} from '@material-ui/core/styles';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import LockIcon from '@material-ui/icons/Lock';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import ClassIcon from '@material-ui/icons/Class';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 
@@ -65,7 +67,7 @@ export default function AppDrawer(props){
       >
       <ListItem button onClick={()=>(setExpand(!expand))}>
         <ListItemIcon>
-          <LockIcon/>
+          <FormatListBulletedIcon/>
         </ListItemIcon>
         <ListItemText primary="Genki Book" />
         {expand ? <ExpandLess /> : <ExpandMore />}
@@ -81,7 +83,7 @@ export default function AppDrawer(props){
             className={classes.nested}
             onClick={()=>onGetJCardHandler("/genki/random/1")}
           >
-            <ListItemIcon> <LockIcon/> </ListItemIcon>
+            <ListItemIcon> <ClassIcon/> </ListItemIcon>
             <ListItemText primary="Genki Book Vol 1"/>
           </ListItem>
           <ListItem 
@@ -89,7 +91,7 @@ export default function AppDrawer(props){
             className={classes.nested}
             onClick={()=>onGetJCardHandler("/genki/random/2")}
           >
-            <ListItemIcon> <LockIcon/> </ListItemIcon>
+            <ListItemIcon> <ClassIcon/> </ListItemIcon>
             <ListItemText primary="Genki Book Vol 2"/>
           </ListItem>
         </List>
