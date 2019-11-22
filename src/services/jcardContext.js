@@ -85,8 +85,8 @@ export function AppCtxProvider(props){
             currUrl:action.payload.currUrl,
             cardTitle:action.payload.cardTitle
         }});
-        localStorage.setItem('current-url',appState.currUrl);
-        localStorage.setItem('current-title',appState.cardTitle);
+        localStorage.setItem('current-url',action.payload.currUrl);
+        localStorage.setItem('current-title',action.payload.cardTitle);
       break;
   
       default:
