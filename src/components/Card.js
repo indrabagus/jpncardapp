@@ -8,9 +8,9 @@ import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme)=>({
   card : {
-    maxWidth:400,
+    maxWidth:290,
     minWidth:290,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.down('sm')]: {
       maxWidth:600,      
       minWidth:600,
     },
@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme)=>({
 
     borderRadius:10,
   },
+
   title: {
     fontSize:'1rem',
     [theme.breakpoints.up('sm')]: {
@@ -39,6 +40,9 @@ const useStyles = makeStyles((theme)=>({
   pos: {
     // fontSize:22,
     marginBottom:theme.spacing(2),
+    [theme.breakpoints.up('md')]: {
+      fontSize:'1.5rem',
+    }
   },
 }));
 

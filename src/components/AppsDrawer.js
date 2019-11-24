@@ -40,7 +40,11 @@ export default function AppDrawer(props){
   const classes = useStyles();
   const appctx = React.useContext(AppContext);
   const [expand, setExpand] = React.useState(false);
-
+  const itemstyle = {
+    paddingTop:1,
+    paddingBottom:1,
+    height:'42px',
+  }
   function onGetJCardHandler(url,title){
     // save all to the app context
     appctx.action({
@@ -68,6 +72,7 @@ export default function AppDrawer(props){
       </div>
       <Divider/>
       <List 
+        dense
         className={classes.list}
         role="presentation"
 
@@ -80,12 +85,13 @@ export default function AppDrawer(props){
         {expand ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={expand} timeout="auto" unmountOnExit>
-        <List
+        <List dense
           onClick={props.onClose}
           onKeyDown={props.onClose} 
           component="div" disablePadding
         >
-          <ListItem 
+          <ListItem
+            style={itemstyle} 
             button 
             className={classes.nested}
             onClick={()=>onGetJCardHandler("/genki/random/1","Genki Volume 1")}
@@ -94,12 +100,13 @@ export default function AppDrawer(props){
             <ListItemText primary="Genki Book Vol 1"/>
           </ListItem>
 
-          <ListItem 
+          <ListItem
+            style={itemstyle}
             button 
             className={classes.nested}
             onClick={()=>onGetJCardHandler("/genki/random/2","Genki Volume 2")}
           >
-            <IconButton> <ClassIcon/> </IconButton>            
+            <IconButton> <ClassIcon/> </IconButton>
             <ListItemText primary="Genki Book Vol 2"/>
           </ListItem>
         </List>

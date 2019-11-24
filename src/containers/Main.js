@@ -26,6 +26,8 @@ const useStyles = makeStyles((theme)=>({
   },
 
   toolbar:{
+    paddingLeft:theme.spacing(1),
+    paddingRight:theme.spacing(1),
     marginTop : theme.spacing(2),
     marginBottom:theme.spacing(5),
     borderTop : `1px solid ${theme.palette.divider}`,
@@ -78,38 +80,41 @@ export default function MainContainer(props) {
     });
   }
 
-  React.useEffect(function(){
-    onGetCardData();    
-  },[]);
+  React.useEffect(onGetCardData,[]);
+
+  const JCAppBar = (
+    <Toolbar className={classes.toolbar}>
+    <IconButton
+      style={{ backgroundColor: 'transparent',marginRight:'15px' }}
+      onClick={handleDrawerOpen}>
+      <MenuIcon/>
+    </IconButton>
+    <Icon classes={{root: classes.iconRoot}}>
+      <img
+        src={JpnSvg}
+        className={classes.imageIcon}
+        alt=""
+      />
+    </Icon>
+    <Typography 
+      className={classes.toolbarTitle}
+      component="h2"
+      variant="h5"
+      color="inherit"
+      noWrap
+    >
+      Japan Card Application
+    </Typography>
+  </Toolbar>
+  );
 
   return(
-    <React.Fragment>
     <Container maxWidth='lg'>
-      <Toolbar className={classes.toolbar}>
-        <IconButton onClick={handleDrawerOpen}>
-          <MenuIcon/>
-        </IconButton>
-        <Icon classes={{root: classes.iconRoot}}>
-          <img
-            src={JpnSvg}
-            className={classes.imageIcon}
-            alt=""
-          />
-        </Icon>
-        <Typography 
-          className={classes.toolbarTitle}
-          component="h2"
-          variant="h5"
-          color="inherit"
-          noWrap
-        >
-          Japan Card Application
-        </Typography>
-      </Toolbar>
+      { JCAppBar }
       <AppDrawer
         open={drawerOpen}
         onClose={handleDrawerOpen}
-        onGetCard={onGetCardData}        
+        onGetCard={onGetCardData}
       />
       <Grid  
         container
@@ -132,7 +137,6 @@ export default function MainContainer(props) {
         <Copyright/>
       </div>
     </Container>
-    </React.Fragment>
   );
 };
 
