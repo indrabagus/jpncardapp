@@ -140,7 +140,7 @@ export default function SignIn(){
         control={
           <Checkbox
             type="checkbox" 
-            checked = {sVal.isRemember}
+            checked = {asGuest}
             id="isRemember" 
             color="primary" 
             onChange={ ()=>(setAsGuest(!asGuest)) } 
