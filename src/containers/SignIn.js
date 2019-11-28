@@ -45,14 +45,17 @@ export default function SignIn(){
   const classes = useStyles();
   const appctx = React.useContext(AppContext);
   const [sVal,setState] = React.useState({
-    username:'',
-    password:'',
+    username:'guest',
+    password:'kumamoto',
     isSubmitting:false,
     isRemember:true,
     errmsg:null    
   });
+  // State for opening dialog
+  const [open, setOpen] = React.useState(false);
 
-  const [open, setOpen] = React.useState(false);  
+  // State for login as guest or not
+  const [asGuest,setAsGuest] = React.useState(true);
 
   function handleChange(event){
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
@@ -77,17 +80,16 @@ export default function SignIn(){
     })
     .catch(err=>{
       console.log("ERROR=>",err);
-      setState({
-        ...sVal,
-        errmsg: err.message||err.statusText
-      });
+      setState( prevState=>{
+        return{
+          ...prevState,
+          errmsg: err.message||err.statusText
+      }});
       setOpen(true);
     });
 
 
   }
-
-
   const handleClose = () => {
     setOpen(false);
   };  
@@ -95,6 +97,7 @@ export default function SignIn(){
   const FormLogin = (
     <form action="/" method="GET" onSubmit={OnSignIn} className={classes.form} noValidate>
       <TextField
+        disabled={asGuest}
         variant="outlined"
         margin="normal"
         required
@@ -106,7 +109,8 @@ export default function SignIn(){
         id="username"
         onChange={handleChange}
       />
-      <TextField 
+      <TextField
+        disabled={asGuest}
         variant="outlined"
         margin="normal"
         id="password"
@@ -120,15 +124,32 @@ export default function SignIn(){
       <FormControlLabel
         control={
           <Checkbox
+            disabled={asGuest}
             type="checkbox" 
             checked = {sVal.isRemember}
             id="isRemember" 
             color="primary" 
             onChange={handleChange} 
           />
+          
         }
         label="Remember me"
       />
+
+      <FormControlLabel
+        control={
+          <Checkbox
+            type="checkbox" 
+            checked = {sVal.isRemember}
+            id="isRemember" 
+            color="primary" 
+            onChange={ ()=>(setAsGuest(!asGuest)) } 
+          />
+        }
+        label="Login as guest"
+      />
+
+
       <Button
         className={classes.submit}
         type="submit"
@@ -155,8 +176,8 @@ export default function SignIn(){
         { FormLogin }
       <Grid container>
         <Grid item>
-          <Link href="#" variant="body2">
-            {"Contact Email: indra.bagus@gmail.com"}
+          <Link href="mailto:indra.bagus@gmail.com" variant="body2">
+            {"Contact: indra.bagus@gmail.com"}
           </Link>
         </Grid>
       </Grid>
