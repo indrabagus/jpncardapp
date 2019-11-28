@@ -10,13 +10,18 @@ const useStyles = makeStyles((theme)=>({
   card : {
     maxWidth:290,
     minWidth:290,
-    [theme.breakpoints.down('sm')]: {
-      maxWidth:600,      
-      minWidth:600,
+    [theme.breakpoints.up('375')]: {
+      maxWidth:340,
+      minWidth:340,
     },
+
+    [theme.breakpoints.up('400')]: {
+      maxWidth:380,
+      minWidth:380,
+    },    
     
     [theme.breakpoints.up('md')]: {
-      maxWidth:1024,      
+      maxWidth:1024,
       minWidth:800,
     },
 
