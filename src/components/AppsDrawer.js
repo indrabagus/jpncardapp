@@ -18,6 +18,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 
 import AppContext from '../services/jcardContext'
+import {apUrlRandGenki1,apUrlRandGenki2} from '../services/jcardApi';
 
 const useStyles = makeStyles((theme)=>({
   toolBar : {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme)=>({
     alignItems:'centre',
     justifyContent: 'flex-end',
     padding: theme.spacing(0,1),
-    ...theme.mixins.toolbar    
+    ...theme.mixins.toolbar
   },
   nested: {
     paddingLeft: theme.spacing(4),
@@ -94,7 +95,7 @@ export default function AppDrawer(props){
             style={itemstyle} 
             button 
             className={classes.nested}
-            onClick={()=>onGetJCardHandler("/genki/random/1","Genki Volume 1")}
+            onClick={()=>onGetJCardHandler(apUrlRandGenki1,"Genki Volume 1")}
           >
             <IconButton> <ClassIcon/> </IconButton>
             <ListItemText primary="Genki Book Vol 1"/>
@@ -104,7 +105,7 @@ export default function AppDrawer(props){
             style={itemstyle}
             button 
             className={classes.nested}
-            onClick={()=>onGetJCardHandler("/genki/random/2","Genki Volume 2")}
+            onClick={()=>onGetJCardHandler(apUrlRandGenki2,"Genki Volume 2")}
           >
             <IconButton> <ClassIcon/> </IconButton>
             <ListItemText primary="Genki Book Vol 2"/>
