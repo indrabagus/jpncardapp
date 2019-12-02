@@ -7,10 +7,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu'
 import {makeStyles} from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 import AppDrawer from '../components/AppsDrawer';
-import VoCard from '../components/Card';
+import VoCard,{VoErrorCard} from '../components/Card';
 import {getCardData} from '../services/jcardApi';
 import AppContext from '../services/jcardContext';
 import Copyright from '../components/Copyright';
@@ -42,12 +41,13 @@ const useStyles = makeStyles((theme)=>({
     },
   },
 
-  card : {
-    marginTop : theme.spacing(1),
-    display:'flex',
-    alignItems:'centre',
-    justifyContent: 'flex-end',
-  },
+  // card : {
+  //   marginTop : theme.spacing(1),
+  //   display:'flex',
+  //   alignItems:'centre',
+  //   justifyContent: 'flex-end',
+  // },
+  
   copyright :{
     marginTop:theme.spacing(3)
   }
@@ -58,6 +58,7 @@ export default function MainContainer(props) {
   const [drawerOpen,setDrawerOpen]=React.useState(false);
   const [cardvalue,setCardValue] = React.useState({});
   const [busy,setBusy] = React.useState(false);
+  const [error,setError]=React.useState();
   const appctx = React.useContext(AppContext);
   function handleDrawerOpen(){
     setDrawerOpen(!drawerOpen);
@@ -66,11 +67,14 @@ export default function MainContainer(props) {
   /* Get Card data from the backend */
   function onGetCardData(){
     setBusy(true);
+    setError(null);
     getCardData(appctx.state.token,appctx.state.currUrl)
     .then((resp)=>{
       setCardValue(resp.result);
+      
     })
     .catch((err)=>{
+      setError(err.message);
       if(err.response){
         console.log("RESP:",err.response);
         if(err.response.status === 401){
@@ -78,10 +82,12 @@ export default function MainContainer(props) {
         }
       }
       else{
-        console.log("ERROR :",err);
+        console.log("ErrMsg :",err);
       }
+    })
+    .finally(function(){
+      setBusy(false);
     });
-    setBusy(false);
   }
 
   React.useEffect(onGetCardData,[]);
@@ -129,14 +135,16 @@ export default function MainContainer(props) {
         // style={{ minHeight: '100vh' }}
       >
         <Grid item xs={12}>
-          { 
-            busy ?  <CircularProgress/> : 
-                    <VoCard
-                      data={cardvalue}
-                      title={appctx.state.cardTitle}
-                      onGetCard={onGetCardData}
-                    />
-          }
+          {error ? (
+            <VoErrorCard errormsg={error}/>
+          ):(
+              <VoCard
+                isBusy={busy}
+                data={cardvalue}
+                title={appctx.state.cardTitle}
+                onGetCard={onGetCardData}
+              />
+          )}
         </Grid>
 
       </Grid>
