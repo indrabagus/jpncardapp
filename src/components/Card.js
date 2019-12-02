@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import {makeStyles} from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Icon from '@material-ui/core/Icon';
+import JpnSvg from '../assets/japan.svg';
 
 const useStyles = makeStyles((theme)=>({
   card : {
@@ -47,6 +49,16 @@ const useStyles = makeStyles((theme)=>({
       fontSize:'1.5rem',
     }
   },
+
+  imageIcon: {
+    height: '100%'
+  },
+
+  iconRoot: {
+    textAlign: 'center',
+    marginRight:theme.spacing(1),
+  },
+
 }));
 
 export function VoErrorCard(props){
@@ -74,6 +86,13 @@ export default function VoCard(props){
         style={{height:'27vh'}}
         onClick={props.onGetCard}>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
+          <Icon classes={{root: classes.iconRoot}}>
+            <img
+              src={JpnSvg}
+              className={classes.imageIcon}
+              alt=""
+            />
+          </Icon>
           {props.title}
         </Typography>
         {props.isBusy ? (
