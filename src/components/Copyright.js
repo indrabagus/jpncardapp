@@ -5,9 +5,9 @@ import Link from '@material-ui/core/Link';
 export default function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://indrabagus.github.io">
-        Digital Bagus
+      {' © '}
+      <Link color="inherit" href="https://indrabagus.github.io/jpncardapp">
+        ディジタルバグス
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
