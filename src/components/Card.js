@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme)=>({
     maxWidth:'85vw',
     minWidth:'85vw',
     [theme.breakpoints.up('lg')]: {
-      maxWidth:'60vw',
-      minWidth:'60vw',
+      maxWidth:'50vw',
+      minWidth:'50vw',
     },    
     borderRadius:10,
   },
@@ -34,12 +34,9 @@ const useStyles = makeStyles((theme)=>({
     },
 
     [theme.breakpoints.up('400')]: {
-      fontSize:'2.6rem',
+      fontSize:'2rem',
     },    
 
-    [theme.breakpoints.up('md')]: {
-      fontSize:'2rem',
-    }
   },
 
   pos: {
@@ -65,10 +62,10 @@ export function VoErrorCard(props){
   const classes = useStyles();
   return(
     <Card 
-      style={{ backgroundColor: '#ECEFF1',height: '30vh' }} 
+      style={{ backgroundColor: '#ECEFF1',height: '10vh' }} 
       className={classes.card}>
       <CardContent onClick={props.onGetCard}>
-        <Typography style = {{color:'red'}} className={classes.pos}>
+        <Typography style = {{color:'darkred'}} className={classes.pos}>
           {props.errormsg}
         </Typography>
       </CardContent>
@@ -106,7 +103,7 @@ export default function VoCard(props){
           {/* If it's not kanji write unicode 'space' (\u00a0) instead */}
           { props.data.kanji ? '[ '+props.data.kana+' ]':"\u00a0"} 
         </Typography>
-        <Typography style={{fontSize:'1.1rem'}} variant="body2" component="p">
+        <Typography variant="body2" component="p">
           "{props.data.english}"
             {/* TODO: Example Given 
             <br />
