@@ -19,12 +19,13 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 import AppContext from '../services/jcardContext'
 import {apUrlRandGenki1,apUrlRandGenki2} from '../services/jcardApi';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme)=>({
   toolBar : {
     display:'flex',
     alignItems:'centre',
-    justifyContent: 'flex-end',
+    // justifyContent: 'flex-end',
     padding: theme.spacing(0,1),
     ...theme.mixins.toolbar
   },
@@ -67,8 +68,12 @@ export default function AppDrawer(props){
       }}
     >
       <div className={classes.toolBar}>
-        <IconButton onClick={props.onClose}>
+        <IconButton style={{backgroundColor: 'transparent',}} onClick={props.onClose}>
           <ChevronLeftIcon />
+          <Typography >
+          元気 Vocabulary
+        </Typography>
+
         </IconButton>
       </div>
       <Divider/>
